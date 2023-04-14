@@ -1,9 +1,15 @@
 from NumberGuesser_class import NumberGuesser
 import tkinter as tk
+import random
 
 
 def start_game():
-    n = NumberGuesser()
+    rand_num = random.randint(1, 10)
+    ng = NumberGuesser(rand_num)
+    return ng
+
+
+n = start_game()
 
 
 # def display_text(text):
@@ -40,28 +46,34 @@ num_4 = tk.Button(win, text="4", command=lambda: [n.guess_number(4),
 num_4.pack()
 
 num_5 = tk.Button(win, text="5", command=lambda: [n.guess_number(5),
-                                                  n.add_number(5)]).grid(row=6)
+                                                  n.add_number(5)])
+num_5.pack()
 
 num_6 = tk.Button(win, text="6", command=lambda: [n.guess_number(7),
-                                                  n.add_number(7)]).grid(row=7)
+                                                  n.add_number(7)])
+num_6.pack()
 
 num_7 = tk.Button(win, text="7", command=lambda: [n.guess_number(8),
-                                                  n.add_number(8)]).grid(row=8)
+                                                  n.add_number(8)])
+num_7.pack()
 
 num_8 = tk.Button(win, text="8", command=lambda: [n.guess_number(8),
-                                                  n.add_number(8)]).grid(row=9)
+                                                  n.add_number(8)])
+num_8.pack()
 
 num_9 = tk.Button(win, text="9", command=lambda: [n.guess_number(9),
-                                                  n.add_number(9)]).grid(row=10)
+                                                  n.add_number(9)])
+num_9.pack()
 
 num_10 = tk.Button(win, text="10", command=lambda: [n.guess_number(10),
-                                                    n.add_number(10)]).grid(row=11)
+                                                    n.add_number(10)])
+num_10.pack()
 
 
 # reset_button = tk.Button(text="Reset", command=reset_game)
 # reset_button.grid(row=5)
 
 exit_button = tk.Button(win, text='Exit', width=10, command=win.destroy)  # exit button closes window
-exit_button.grid(row=12)
+exit_button.pack()
 
 # btn1 = tk.Button(tk, text="1", command=lambda: print_text("Button 1"))

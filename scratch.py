@@ -1,21 +1,34 @@
-from tkinter import *
+import tkinter as tk
+from tkinter import ttk
+from tkinter.messagebox import showinfo
 
-root = Tk()  # create parent window
+def popup_bonus():
+    win = tk.Toplevel()
+    win.wm_title("Window")
 
-# use Button and Label widgets to create a simple TV remote
-turn_on = Button(root, text="ON")
-turn_on.pack()
+    l = tk.Label(win, text="Input")
+    l.grid(row=0, column=0)
 
-turn_off = Button(root, text="OFF", command=root.quit)
-turn_off.pack()
+    b = ttk.Button(win, text="Okay", command=win.destroy)
+    b.grid(row=1, column=0)
 
-volume = Label(root, text="VOLUME")
-volume.pack()
+def popup_showinfo():
+    showinfo("Window", "Hello World!")
 
-vol_up = Button(root, text="+")
-vol_up.pack()
+class Application(ttk.Frame):
 
-vol_down = Button(root, text="-")
-vol_down.pack()
+    def __init__(self, master):
+        ttk.Frame.__init__(self, master)
+        self.pack()
+
+        self.button_bonus = ttk.Button(self, text="Bonuses", command=popup_bonus)
+        self.button_bonus.pack()
+
+        self.button_showinfo = ttk.Button(self, text="Show Info", command=popup_showinfo)
+        self.button_showinfo.pack()
+
+root = tk.Tk()
+
+app = Application(root)
 
 root.mainloop()
