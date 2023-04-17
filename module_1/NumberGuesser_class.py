@@ -9,13 +9,13 @@ import tkinter as tk
 
 class NumberGuesser:
     """NumberGuesser class"""
-    guessed_list = []
 
-    def __init__(self, num):
-        self.random_number = num
+    def __init__(self, rand_num):
+        self.random_number = rand_num
+        self.guessed_list = []
 
-    def guess_number(self, num):
-        if num == self.random_number:
+    def guess_number(self, guess_num):
+        if self.random_number == guess_num:
             win = tk.Toplevel()
             win.wm_title("Window")
 
@@ -24,16 +24,14 @@ class NumberGuesser:
 
             b = tk.Button(win, text="Okay", command=win.destroy)
             b.grid(row=1, column=0)
-            # return f"That's right! The number was: {self.random_number}"
-        # else:
-            # return f"{num} is not the correct number"
+            return f"That's right! The number was: {self.random_number}"
+        else:
+            return f"{guess_num} is not the correct number"
 
-    def add_number(self, num):
-        NumberGuesser.guessed_list.append(num)
-        return NumberGuesser.guessed_list
+        self.guessed_list.append(guess_num)
 
     def get_number_list(self):
-        return NumberGuesser.guessed_list
+        return self.guessed_list
 
     def __str__(self):
         return f"{self.random_number}"
