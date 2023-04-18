@@ -106,4 +106,23 @@ def select_all_students(conn):
     return rows  # return the rows
 
 
-conn = create_connection("pydb.db")
+if __name__ == '__main__':
+    create_tables("pythonsqlite.db")
+
+    conn = create_connection("pythonsqlite.db")
+
+    with conn:
+        person = ('Rob', 'Thomas')
+        person_id = create_person(conn, person)
+
+        student = (person_id, 'Songwriting', '2000-01-01')
+        student_id = create_student(conn, student)
+
+    with conn:
+        persons = select_all_persons(conn)
+        for row in persons:
+            print(row)
+
+        students = select_all_students(conn)
+        for row in students:
+            print(row)
