@@ -1,9 +1,17 @@
+"""
+program: NumberGuesser_GUI.py
+author: kyle godwin
+last date modified: 18 april 2023
+
+user interface for number guessing game
+utilizing NumberGuesser_class.py
+"""
 from NumberGuesser_class import NumberGuesser
 import tkinter as tk
 import random
 
 
-def start_game():
+def start_game():  # turn all guess buttons to normal
     num_1.config(state='normal')
     num_2.config(state='normal')
     num_3.config(state='normal')
@@ -15,12 +23,12 @@ def start_game():
     num_9.config(state='normal')
     num_10.config(state='normal')
 
-    rand_num = random.randint(1, 10)
+    rand_num = random.randint(1, 10)  # generate random number between 1 and 10
     global n
-    n = NumberGuesser(rand_num)
+    n = NumberGuesser(rand_num)  # initialize the NumberGuesser class
 
 
-def button_guess(pressed_button):
+def button_guess(pressed_button):  # disables guess button once pressed
     if pressed_button == 1:
         num_1.config(state="disabled")
     elif pressed_button == 2:

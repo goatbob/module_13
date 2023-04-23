@@ -1,3 +1,10 @@
+"""
+program: connect_to_database.py
+author: kyle godwin
+last date modified: 18 april 2023
+
+Connect to database, create tables, return rows
+"""
 import sqlite3
 from sqlite3 import Error
 

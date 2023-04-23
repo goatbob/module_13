@@ -1,3 +1,11 @@
+"""
+program: database_kg.py
+author: kyle godwin
+last date modified: 18 april 2023
+
+Connect to database, create tables, return rows
+"""
+
 import sqlite3
 from sqlite3 import Error
 
@@ -14,7 +22,7 @@ def create_connection(db):
     return None
 
 
-def create_table(conn, sql_create_table):
+def create_table(conn, sql_create_table):  # function to create table
     """ Creates table with give sql statement
     :param conn: Connection object
     :param sql_create_table: a SQL CREATE TABLE statement
@@ -27,7 +35,7 @@ def create_table(conn, sql_create_table):
         print(e)
 
 
-def create_tables(database):
+def create_tables(database):  # function to create tables for person and student
 
     sql_create_person_table = """ CREATE TABLE IF NOT EXISTS person (
                                         id integer PRIMARY KEY,
@@ -47,14 +55,14 @@ def create_tables(database):
     conn = create_connection(database)
     if conn is not None:
         # create projects table
-        create_table(conn, sql_create_person_table)
+        create_table(conn, sql_create_person_table)  # creates person table
         # create tasks table
-        create_table(conn, sql_create_student_table)
+        create_table(conn, sql_create_student_table)  # creates student table
     else:
         print("Unable to connect to " + str(database))
 
 
-def create_person(conn, person):
+def create_person(conn, person):  # create person row in person table
     """Create a new person for table
     :param conn:
     :param person:
@@ -67,7 +75,7 @@ def create_person(conn, person):
     return cur.lastrowid # returns the row id of the cursor object, the person id
 
 
-def select_all_persons(conn):
+def select_all_persons(conn):  # return rows from person table
     """Query all rows of person table
     :param conn: the connection object
     :return:
@@ -80,7 +88,7 @@ def select_all_persons(conn):
     return rows  # return the rows
 
 
-def create_student(conn, student):
+def create_student(conn, student):  # create student row in student table
     """Create a new person for table
     :param conn:
     :param student:
@@ -93,7 +101,7 @@ def create_student(conn, student):
     return cur.lastrowid  # returns the row id of the cursor object, the student id
 
 
-def select_all_students(conn):
+def select_all_students(conn):  # return rows from student table
     """Query all rows of student table
     :param conn: the connection object
     :return:
@@ -126,3 +134,5 @@ if __name__ == '__main__':
         students = select_all_students(conn)
         for row in students:
             print(row)
+
+    conn.close()
